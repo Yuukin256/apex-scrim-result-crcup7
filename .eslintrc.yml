@@ -27,3 +27,6 @@ settings:
     typescript: ''
   react:
     version: 'detect'
+
+ignorePatterns:
+  - 'public/'
