@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: 'vsaikyo_apex3_scrim_result',
+  pathPrefix: 'apex-scrim-result-crcup7',
   siteMetadata: {
     title: `第7回CRカップ 練習カスタム試合結果 (非公式)`,
     description: `第7回 Crazy Raccoon Cup Apex Legends Powered by Mildom の事前練習カスタム (スクリム) の試合結果をまとめた非公式サイト`,
