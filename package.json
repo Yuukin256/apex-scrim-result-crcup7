@@ -12,8 +12,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "dev": "ts-node",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "jest --passWithNoTests",
+    "test:coverage": "jest --coverage --passWithNoTests",
     "lint": "prettier -c . && eslint . && tsc --noEmit",
     "lint:fix": "eslint . --fix",
     "format": "prettier -w ."
