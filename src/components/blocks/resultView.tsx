@@ -25,7 +25,7 @@ const ResultView: React.VFC<Props> = (props) => {
       <FormControlLabel
         onChange={forForm.handleIncludeAdditionalMatch}
         control={<Checkbox color="primary" checked={forForm.includeAdditionalMatch} />}
-        label="延長戦を含める"
+        label={`${props.defaultNumbersOfMatches + 1}試合目以降を含める`}
         labelPlacement="start"
       />
       <ResultTable teamResult={teamResult} />
