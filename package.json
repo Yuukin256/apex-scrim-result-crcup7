@@ -40,6 +40,7 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@types/jest": "^27.0.2",
+    "@types/react-dom": "^17.0.9",
     "@types/react-helmet": "^6.1.2",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
