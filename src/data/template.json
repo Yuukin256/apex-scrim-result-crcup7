@@ -1,0 +1,107 @@
+{
+  "match": 1,
+  "map": "World's Edge",
+  "maxKill": null,
+  "teams": [
+    {
+      "id": 1,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 2,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 3,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 4,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 5,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 6,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 7,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 8,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 9,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 10,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 11,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 12,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 13,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 14,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 15,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 16,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 17,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 18,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 19,
+      "placement": 0,
+      "kill": 0
+    },
+    {
+      "id": 20,
+      "placement": 0,
+      "kill": 0
+    }
+  ]
+}

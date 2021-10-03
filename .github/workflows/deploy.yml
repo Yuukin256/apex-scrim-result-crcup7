@@ -1,0 +1,19 @@
+name: 'production deploy'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    env:
+      ANALYTICS_TRACKING_ID: ${{ secrets.ANALYTICS_TRACKING_ID }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: enriikke/gatsby-gh-pages-action@v2
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: gh-pages
+          gatsby-args: --prefix-paths
