@@ -43,7 +43,7 @@ export const useTeamResult = (dayResult: DayResult, defaultNumbersOfMatches: num
       const totalKill = sum(matchResult.map((v) => (typeof v.kill === 'string' ? 0 : v.kill)));
       const totalKillPoint = sum(matchResult.map((v) => v.killPoint));
       const totalPoint = sum(matchResult.map((v) => v.point));
-      return { ...team, totalPlacementPoint, totalKill, totalKillPoint, totalPoint };
+      return { ...team, results: matchResult, totalPlacementPoint, totalKill, totalKillPoint, totalPoint };
     });
 
     return totalResult
