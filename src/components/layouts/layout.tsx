@@ -8,8 +8,8 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-// import FabToTop from 'components/atomics/fabToTop';
 import Header from './header';
+import FabToTop from 'components/atoms/fabToTop';
 import './layout.css';
 
 const Layout: React.VFC<{ children: React.ReactNode }> = ({ children }) => {
@@ -26,7 +26,7 @@ const Layout: React.VFC<{ children: React.ReactNode }> = ({ children }) => {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#6d00e2',
+        main: '#DF1818',
       },
     },
   });
@@ -40,9 +40,7 @@ const Layout: React.VFC<{ children: React.ReactNode }> = ({ children }) => {
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-        {
-          //<FabToTop />
-        }
+        <FabToTop />
         <main>{children}</main>
         <footer
           style={{
