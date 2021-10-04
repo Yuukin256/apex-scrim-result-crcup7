@@ -17,6 +17,12 @@ rules:
   react/prop-types:
     - 2
     - skipUndeclared: true
+  react/jsx-boolean-value: 2
+  react/jsx-curly-brace-presence: 2
+  react/self-closing-comp:
+    - 2
+    - component: true
+      html: true
   import/order:
     - 2
     - alphabetize:

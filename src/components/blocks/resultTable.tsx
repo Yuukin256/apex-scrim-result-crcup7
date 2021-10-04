@@ -36,7 +36,7 @@ const StyledTableHead = styled(TableHead)({
 const HeadRow1: React.VFC<{ length: number }> = (props) => {
   return (
     <TableRow>
-      <TableCell colSpan={6} style={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }}></TableCell>
+      <TableCell colSpan={6} style={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }} />
       {Array(props.length)
         .fill(null)
         .map((_, i) => (
