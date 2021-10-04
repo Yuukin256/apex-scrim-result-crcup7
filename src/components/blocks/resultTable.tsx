@@ -33,10 +33,23 @@ const StyledTableHead = styled(TableHead)({
   backgroundColor: '#fafafa',
 });
 
+const getPlacementColor = (placement: number | string): React.CSSProperties => {
+  switch (placement) {
+    case 1:
+      return { backgroundColor: '#DBB400' };
+    case 2:
+      return { backgroundColor: '#B2BABA' };
+    case 3:
+      return { backgroundColor: '#AE6938' };
+    default:
+      return {};
+  }
+};
+
 const HeadRow1: React.VFC<{ length: number }> = (props) => {
   return (
     <TableRow>
-      <TableCell colSpan={6} style={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }}></TableCell>
+      <TableCell colSpan={6} style={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }} />
       {Array(props.length)
         .fill(null)
         .map((_, i) => (
@@ -86,17 +99,52 @@ const HeadRow2: React.VFC<{ length: number }> = (props) => (
   </TableRow>
 );
 
-const getPlacementColor = (placement: number | string): React.CSSProperties => {
-  switch (placement) {
-    case 1:
-      return { backgroundColor: '#DBB400' };
-    case 2:
-      return { backgroundColor: '#B2BABA' };
-    case 3:
-      return { backgroundColor: '#AE6938' };
-    default:
-      return {};
-  }
+const TeamResultRow: React.VFC<{ team: TeamTotalResult; index: number; numberOfMatches: number }> = (props) => {
+  const team = props.team;
+  return (
+    <TableRow hover key={team.id}>
+      <TableCell align="right">{props.index + 1}</TableCell>
+      <TableCell>{team.tag}</TableCell>
+      <TableCell>{team.name}</TableCell>
+      <TableCell align="right">
+        <strong>{team.totalPoint}</strong>
+      </TableCell>
+      <TableCell align="right">{team.totalPlacementPoint}</TableCell>
+      <TableCell
+        align="right"
+        title={`${team.totalKill}キル`}
+        style={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }}
+      >
+        {team.totalKill !== team.totalKillPoint ? <em>{team.totalKillPoint}</em> : team.totalKillPoint}
+      </TableCell>
+      {team.results.flatMap((match) => {
+        return [
+          <TableCell
+            key={`${team.id}_${match.match}_placement`}
+            title={`${match.placementPoint}ポイント`}
+            align="right"
+            style={getPlacementColor(match.placement)}
+          >
+            {match.placement}
+          </TableCell>,
+          <TableCell title={`${match.kill}キル`} key={`${team.id}_${match.match}_kill`} align="right">
+            {(typeof match.kill === 'string' ? 0 : match.kill) !== match.killPoint ? (
+              <em>{match.killPoint}</em>
+            ) : (
+              match.killPoint
+            )}
+          </TableCell>,
+          <TableCell
+            key={`${team.id}_${match.match}_point`}
+            align="right"
+            style={match.match !== props.numberOfMatches ? { borderRight: '1px solid rgba(224, 224, 224, 1)' } : {}}
+          >
+            {match.point}
+          </TableCell>,
+        ];
+      })}
+    </TableRow>
+  );
 };
 
 interface Props {
@@ -115,48 +163,7 @@ const ResultTable: React.VFC<Props> = (props) => {
         </StyledTableHead>
         <TableBody>
           {props.teamResult.map((team, i) => (
-            <TableRow hover key={team.id}>
-              <TableCell align="right">{i + 1}</TableCell>
-              <TableCell>{team.tag}</TableCell>
-              <TableCell>{team.name}</TableCell>
-              <TableCell align="right">
-                <strong>{team.totalPoint}</strong>
-              </TableCell>
-              <TableCell align="right">{team.totalPlacementPoint}</TableCell>
-              <TableCell
-                align="right"
-                title={`${team.totalKill}キル`}
-                style={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }}
-              >
-                {team.totalKill !== team.totalKillPoint ? <em>{team.totalKillPoint}</em> : team.totalKillPoint}
-              </TableCell>
-              {team.results.flatMap((match) => {
-                return [
-                  <TableCell
-                    key={`${team.id}_${match.match}_placement`}
-                    title={`${match.placementPoint}ポイント`}
-                    align="right"
-                    style={getPlacementColor(match.placement)}
-                  >
-                    {match.placement}
-                  </TableCell>,
-                  <TableCell title={`${match.kill}キル`} key={`${team.id}_${match.match}_kill`} align="right">
-                    {(typeof match.kill === 'string' ? 0 : match.kill) !== match.killPoint ? (
-                      <em>{match.killPoint}</em>
-                    ) : (
-                      match.killPoint
-                    )}
-                  </TableCell>,
-                  <TableCell
-                    key={`${team.id}_${match.match}_point`}
-                    align="right"
-                    style={match.match !== numberOfMatches ? { borderRight: '1px solid rgba(224, 224, 224, 1)' } : {}}
-                  >
-                    {match.point}
-                  </TableCell>,
-                ];
-              })}
-            </TableRow>
+            <TeamResultRow team={team} index={i} numberOfMatches={numberOfMatches} key={team.id} />
           ))}
         </TableBody>
         <StyledTableHead>
