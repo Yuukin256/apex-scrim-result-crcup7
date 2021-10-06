@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout master
+      - name: Checkout
         uses: actions/checkout@master
 
       - name: Setup Node.js
