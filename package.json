@@ -19,11 +19,8 @@
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx,json}": [
-      "npx eslint . --fix",
-      "npx prettier --write ."
-    ],
-    "*.{ts, tsx, d.ts}": [
-      "npx tsc --noEmit"
+      "npx eslint --fix",
+      "npx prettier --write"
     ]
   },
   "dependencies": {
@@ -49,6 +46,7 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@testing-library/react-hooks": "^7.0.2",
     "@types/jest": "^27.0.2",
     "@types/lodash.sum": "^4.0.6",
     "@types/react-dom": "^17.0.9",
