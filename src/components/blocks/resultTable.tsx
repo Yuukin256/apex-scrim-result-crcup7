@@ -5,6 +5,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import React from 'react';
+import KillTableCell from 'components/atoms/killTableCell';
 import PlacementTableCell from 'components/atoms/placementTableCell';
 import TableCell from 'components/atoms/tableCell';
 import { TeamTotalResult } from 'hooks/useTeamResult';
@@ -97,13 +98,12 @@ const TeamResultRow: React.VFC<{ team: TeamTotalResult; index: number; numberOfM
             placement={match.placement}
             placementPoint={match.placementPoint}
           />,
-          <TableCell title={`${match.kill}キル`} key={`${team.id}_${match.match}_kill`} align="right">
-            {(typeof match.kill === 'string' ? 0 : match.kill) !== match.killPoint ? (
-              <em>{match.killPoint}</em>
-            ) : (
-              match.killPoint
-            )}
-          </TableCell>,
+          <KillTableCell
+            key={`${team.id}_${match.match}_kill`}
+            align="right"
+            kill={match.kill}
+            killPoint={match.killPoint}
+          />,
           <TableCell
             key={`${team.id}_${match.match}_point`}
             align="right"
