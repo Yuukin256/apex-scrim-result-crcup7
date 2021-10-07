@@ -1,28 +1,12 @@
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import MuiTableCell, { TableCellProps } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import React from 'react';
+import TableCell from 'components/atoms/tableCell';
 import { TeamTotalResult } from 'hooks/useTeamResult';
-
-const TableCell = styled<React.JSXElementConstructor<TableCellProps>>(({ title, children, ...props }) => {
-  if (title) {
-    return (
-      <Tooltip title={title}>
-        <MuiTableCell {...props}>{children}</MuiTableCell>
-      </Tooltip>
-    );
-  } else {
-    return <MuiTableCell {...props}>{children}</MuiTableCell>;
-  }
-})({
-  paddingLeft: 12,
-  paddingRight: 12,
-});
 
 const WidthTableCell = styled(TableCell)({
   width: '4.5em',
