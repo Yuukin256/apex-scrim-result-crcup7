@@ -1,28 +1,14 @@
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import MuiTableCell, { TableCellProps } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import React from 'react';
+import KillTableCell from 'components/atoms/killTableCell';
+import PlacementTableCell from 'components/atoms/placementTableCell';
+import TableCell from 'components/atoms/tableCell';
 import { TeamTotalResult } from 'hooks/useTeamResult';
-
-const TableCell = styled<React.JSXElementConstructor<TableCellProps>>(({ title, children, ...props }) => {
-  if (title) {
-    return (
-      <Tooltip title={title}>
-        <MuiTableCell {...props}>{children}</MuiTableCell>
-      </Tooltip>
-    );
-  } else {
-    return <MuiTableCell {...props}>{children}</MuiTableCell>;
-  }
-})({
-  paddingLeft: 12,
-  paddingRight: 12,
-});
 
 const WidthTableCell = styled(TableCell)({
   width: '4.5em',
@@ -32,19 +18,6 @@ const StyledTableHead = styled(TableHead)({
   borderTop: '1px solid rgba(224, 224, 224, 1)',
   backgroundColor: '#fafafa',
 });
-
-const getPlacementColor = (placement: number | string): React.CSSProperties => {
-  switch (placement) {
-    case 1:
-      return { backgroundColor: '#DBB400' };
-    case 2:
-      return { backgroundColor: '#B2BABA' };
-    case 3:
-      return { backgroundColor: '#AE6938' };
-    default:
-      return {};
-  }
-};
 
 const HeadRow1: React.VFC<{ length: number }> = (props) => {
   return (
@@ -119,21 +92,18 @@ const TeamResultRow: React.VFC<{ team: TeamTotalResult; index: number; numberOfM
       </TableCell>
       {team.results.flatMap((match) => {
         return [
-          <TableCell
+          <PlacementTableCell
             key={`${team.id}_${match.match}_placement`}
-            title={`${match.placementPoint}ポイント`}
             align="right"
-            style={getPlacementColor(match.placement)}
-          >
-            {match.placement}
-          </TableCell>,
-          <TableCell title={`${match.kill}キル`} key={`${team.id}_${match.match}_kill`} align="right">
-            {(typeof match.kill === 'string' ? 0 : match.kill) !== match.killPoint ? (
-              <em>{match.killPoint}</em>
-            ) : (
-              match.killPoint
-            )}
-          </TableCell>,
+            placement={match.placement}
+            placementPoint={match.placementPoint}
+          />,
+          <KillTableCell
+            key={`${team.id}_${match.match}_kill`}
+            align="right"
+            kill={match.kill}
+            killPoint={match.killPoint}
+          />,
           <TableCell
             key={`${team.id}_${match.match}_point`}
             align="right"

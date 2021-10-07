@@ -4,3 +4,14 @@ semi: true
 singleQuote: true
 useTabs: false
 tabWidth: 2
+
+overrides:
+  - files:
+      - '*.md'
+      - README
+    options:
+      parser: markdown-nocjsp
+  - files:
+      - '*.mdx'
+    options:
+      parser: mdx-nocjsp
