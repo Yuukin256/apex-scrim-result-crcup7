@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Test
+    name: Deploy
 
     env:
       ANALYTICS_TRACKING_ID: ${{ secrets.ANALYTICS_TRACKING_ID }}
@@ -28,7 +28,7 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: yarn build --path-prefixes
+        run: yarn build --prefix-paths
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
