@@ -17,10 +17,20 @@ const getPlacementColor = (placement: number | string): React.CSSProperties => {
 
 type Props = Omit<TableCellProps, 'title' | 'children'> & { placement: number | string; placementPoint: number };
 
-const PlacementTableCell: React.VFC<Props> = ({ placement, placementPoint, style, ...props }) => (
-  <TableCell {...props} title={`${placementPoint}ポイント`} style={{ ...getPlacementColor(placement), ...style }}>
-    {placement}
-  </TableCell>
-);
+const PlacementTableCell: React.VFC<Props> = ({ placement, placementPoint, style, ...props }) => {
+  if (typeof placement === 'string') {
+    return (
+      <TableCell {...props} title="不参加" style={{ ...getPlacementColor(placement), ...style }}>
+        {placement}
+      </TableCell>
+    );
+  } else {
+    return (
+      <TableCell {...props} title={`${placementPoint}ポイント`} style={{ ...getPlacementColor(placement), ...style }}>
+        {placement}
+      </TableCell>
+    );
+  }
+};
 
 export default PlacementTableCell;
