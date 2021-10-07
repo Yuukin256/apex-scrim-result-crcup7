@@ -5,6 +5,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import React from 'react';
+import PlacementTableCell from 'components/atoms/placementTableCell';
 import TableCell from 'components/atoms/tableCell';
 import { TeamTotalResult } from 'hooks/useTeamResult';
 
@@ -16,19 +17,6 @@ const StyledTableHead = styled(TableHead)({
   borderTop: '1px solid rgba(224, 224, 224, 1)',
   backgroundColor: '#fafafa',
 });
-
-const getPlacementColor = (placement: number | string): React.CSSProperties => {
-  switch (placement) {
-    case 1:
-      return { backgroundColor: '#DBB400' };
-    case 2:
-      return { backgroundColor: '#B2BABA' };
-    case 3:
-      return { backgroundColor: '#AE6938' };
-    default:
-      return {};
-  }
-};
 
 const HeadRow1: React.VFC<{ length: number }> = (props) => {
   return (
@@ -103,14 +91,12 @@ const TeamResultRow: React.VFC<{ team: TeamTotalResult; index: number; numberOfM
       </TableCell>
       {team.results.flatMap((match) => {
         return [
-          <TableCell
+          <PlacementTableCell
             key={`${team.id}_${match.match}_placement`}
-            title={`${match.placementPoint}ポイント`}
             align="right"
-            style={getPlacementColor(match.placement)}
-          >
-            {match.placement}
-          </TableCell>,
+            placement={match.placement}
+            placementPoint={match.placementPoint}
+          />,
           <TableCell title={`${match.kill}キル`} key={`${team.id}_${match.match}_kill`} align="right">
             {(typeof match.kill === 'string' ? 0 : match.kill) !== match.killPoint ? (
               <em>{match.killPoint}</em>
