@@ -37,7 +37,7 @@ export class Team {
     };
   }
 
-  public addMatchResult(match: number, placement: number | string, kill: number | string, maxKill = Infinity): void {
+  public addMatchResult(match: number, placement: number | string, kill: number | string, maxKill = Infinity): this {
     const placementPoint = calculatePlacementPoint(placement);
     const numberOfKill = typeof kill === 'string' ? 0 : kill;
 
@@ -67,6 +67,8 @@ export class Team {
       };
       this.capped.results.push(result);
     }
+
+    return this;
   }
 }
 
