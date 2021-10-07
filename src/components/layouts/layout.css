@@ -507,6 +507,10 @@ li > ul {
   margin-bottom: calc(1.45rem / 2);
   margin-top: calc(1.45rem / 2);
 }
+footer p {
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
 blockquote *:last-child {
   margin-bottom: 0;
 }

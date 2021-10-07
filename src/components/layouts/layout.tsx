@@ -8,6 +8,7 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
+import Footer from './footer';
 import Header from './header';
 import FabToTop from 'components/atoms/fabToTop';
 import './layout.css';
@@ -33,25 +34,17 @@ const Layout: React.VFC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Header siteTitle={data.site.siteMetadata?.title ?? `Title`} />
       <div
         style={{
           margin: `0 auto`,
-          padding: `0 1.0875rem 1.45rem`,
+          padding: `0 1.45rem`,
         }}
       >
         <FabToTop />
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © 2021 Yuukin256 (<a href="https://twitter.com/Yuukin256">@Yuukin256</a>), Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
       </div>
+      <Footer />
     </ThemeProvider>
   );
 };
