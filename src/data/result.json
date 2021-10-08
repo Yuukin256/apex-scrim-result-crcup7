@@ -3450,6 +3450,113 @@
             "kill": 6
           }
         ]
+      },
+      {
+        "match": 6,
+        "map": "World's Edge",
+        "maxKill": null,
+        "teams": [
+          {
+            "id": 1,
+            "placement": 1,
+            "kill": 8
+          },
+          {
+            "id": 2,
+            "placement": 17,
+            "kill": 0
+          },
+          {
+            "id": 3,
+            "placement": 6,
+            "kill": 3
+          },
+          {
+            "id": 4,
+            "placement": 8,
+            "kill": 2
+          },
+          {
+            "id": 5,
+            "placement": 5,
+            "kill": 0
+          },
+          {
+            "id": 6,
+            "placement": 2,
+            "kill": 4
+          },
+          {
+            "id": 7,
+            "placement": 12,
+            "kill": 2
+          },
+          {
+            "id": 8,
+            "placement": 13,
+            "kill": 1
+          },
+          {
+            "id": 9,
+            "placement": 3,
+            "kill": 9
+          },
+          {
+            "id": 10,
+            "placement": 7,
+            "kill": 0
+          },
+          {
+            "id": 11,
+            "placement": 9,
+            "kill": 4
+          },
+          {
+            "id": 12,
+            "placement": 15,
+            "kill": 3
+          },
+          {
+            "id": 13,
+            "placement": 10,
+            "kill": 2
+          },
+          {
+            "id": 14,
+            "placement": 14,
+            "kill": 2
+          },
+          {
+            "id": 15,
+            "placement": 16,
+            "kill": 1
+          },
+          {
+            "id": 16,
+            "placement": 19,
+            "kill": 0
+          },
+          {
+            "id": 17,
+            "placement": 11,
+            "kill": 2
+          },
+          {
+            "id": 18,
+            "placement": 18,
+            "kill": 2
+          },
+          {
+            "id": 19,
+            "placement": 4,
+            "kill": 13
+          },
+          {
+            "id": 20,
+            "placement": "-",
+            "kill": "-"
+          }
+        ]
       }
     ]
   }
