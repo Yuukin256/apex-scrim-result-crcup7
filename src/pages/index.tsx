@@ -2,10 +2,11 @@ import React from 'react';
 import ResultView from 'components/blocks/resultView';
 import Layout from 'components/layouts/layout';
 import Seo from 'components/layouts/seo';
+import scrimMatchData from 'data/result.json';
 import formatResultData from 'util/formatResultData';
 
 const MainPage: React.FC = () => {
-  const data = formatResultData();
+  const data = formatResultData(scrimMatchData);
   return (
     <Layout>
       <Seo title="Home" />

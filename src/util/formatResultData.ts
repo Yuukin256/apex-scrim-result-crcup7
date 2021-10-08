@@ -1,10 +1,9 @@
 // 試合ごとの結果 -> チームごとの結果 に変換
 
 import { calculatePlacementPoint } from './calculatePlacementPoint';
-import scrimMatchData from 'data/result.json';
 import teamData from 'data/team.json';
 
-export interface TeamResult {
+export interface PlainTeamResult {
   id: number;
   tag: string;
   name: string;
@@ -18,9 +17,14 @@ export interface TeamResult {
   }[];
 }
 
-export class Team {
-  noCapped: TeamResult;
-  capped: TeamResult;
+export interface CalculatedTeamResult {
+  noCapped: PlainTeamResult;
+  capped: PlainTeamResult;
+}
+
+class Team implements CalculatedTeamResult {
+  noCapped: PlainTeamResult;
+  capped: PlainTeamResult;
 
   constructor(id: number, tag: string, name: string) {
     this.noCapped = {
@@ -70,14 +74,31 @@ export class Team {
 
     return this;
   }
+
+  public toJSON(): CalculatedTeamResult {
+    return {
+      noCapped: this.noCapped,
+      capped: this.capped,
+    };
+  }
 }
 
 export interface DayResult {
   day: string;
-  teams: Team[];
+  teams: CalculatedTeamResult[];
 }
 
-const formatResultData = (): DayResult[] => {
+export interface DayResultInputData {
+  day: string;
+  matches: {
+    match: number;
+    map: string;
+    maxKill: number | null;
+    teams: { id: number; placement: number | string; kill: number | string }[];
+  }[];
+}
+
+const formatResultData = (scrimMatchData: DayResultInputData[]): DayResult[] => {
   const formatted = scrimMatchData.map((dayResult) => {
     const teams: Team[] = teamData.map(({ id, tag, name }) => new Team(id, tag, name));
 
@@ -92,7 +113,7 @@ const formatResultData = (): DayResult[] => {
       });
     });
 
-    return { day: dayResult.day, teams: teams };
+    return { day: dayResult.day, teams: teams.map((v) => v.toJSON()) };
   });
 
   return formatted;
