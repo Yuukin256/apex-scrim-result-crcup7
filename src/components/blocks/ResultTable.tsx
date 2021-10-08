@@ -5,9 +5,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import React from 'react';
-import KillTableCell from 'components/atoms/killTableCell';
-import PlacementTableCell from 'components/atoms/placementTableCell';
-import TableCell from 'components/atoms/tableCell';
+import KillTableCell from 'components/atoms/KillTableCell';
+import PlacementTableCell from 'components/atoms/PlacementTableCell';
+import TableCell from 'components/atoms/TableCell';
 import { TeamTotalResult } from 'hooks/useTeamResult';
 
 const WidthTableCell = styled(TableCell)({

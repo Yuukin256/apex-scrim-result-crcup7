@@ -1,6 +1,6 @@
 import { TableCellProps } from '@mui/material/TableCell';
 import React from 'react';
-import TableCell from './tableCell';
+import TableCell from './TableCell';
 
 const getPlacementColor = (placement: number | string): React.CSSProperties => {
   switch (placement) {

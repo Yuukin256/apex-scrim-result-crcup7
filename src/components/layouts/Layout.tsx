@@ -8,10 +8,10 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import Footer from './footer';
-import Header from './header';
-import FabToTop from 'components/atoms/fabToTop';
-import './layout.css';
+import Footer from './Footer';
+import Header from './Header';
+import FabToTop from 'components/atoms/FabToTop';
+import './Layout.css';
 
 const Layout: React.VFC<{ children: React.ReactNode }> = ({ children }) => {
   const data = useStaticQuery(graphql`

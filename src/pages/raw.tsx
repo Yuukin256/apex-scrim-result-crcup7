@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from 'components/layouts/layout';
-import Seo from 'components/layouts/seo';
+import Layout from 'components/layouts/Layout';
+import Seo from 'components/layouts/Seo';
 import result from 'data/result.json';
 import team from 'data/team.json';
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import ResultView from 'components/blocks/resultView';
-import Layout from 'components/layouts/layout';
-import Seo from 'components/layouts/seo';
+import ResultView from 'components/blocks/ResultView';
+import Layout from 'components/layouts/Layout';
+import Seo from 'components/layouts/Seo';
 import scrimMatchData from 'data/result.json';
 import formatResultData from 'util/formatResultData';
 

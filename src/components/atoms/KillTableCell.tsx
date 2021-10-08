@@ -1,6 +1,6 @@
 import { TableCellProps } from '@mui/material/TableCell';
 import React from 'react';
-import TableCell from './tableCell';
+import TableCell from './TableCell';
 
 type Props = Omit<TableCellProps, 'title' | 'children'> & { kill: number | string; killPoint: number };
 
