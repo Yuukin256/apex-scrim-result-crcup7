@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkapex_scrim_result_crcup7=self.webpackChunkapex_scrim_result_crcup7||[]).push([[218],{938:function(e,t,u){u.r(t);var l=u(7294),n=u(1465),c=u(8322);t.default=function(){return l.createElement(n.Z,null,l.createElement(c.Z,{title:"404 Not found"}),l.createElement("h1",null,"404 Not Found"),l.createElement("p",null,"おっと、存在しないページにアクセスしたようです。"))}}}]);
-//# sourceMappingURL=component---src-pages-404-tsx-3ee12ea69b3275b790d9.js.map
