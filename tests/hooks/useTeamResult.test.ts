@@ -109,16 +109,16 @@ const testData: DayResult = {
   ],
 };
 
-it('test for initial values of useTeamResult', () => {
+it('初期値のテスト', () => {
   const { result } = renderHook(() => useTeamResult(testData, 1));
 
-  // 初期値のテスト
   expect(result.current.forForm.enableMaxKill).toBe(false);
   expect(result.current.forForm.handleMaxKill).not.toBeUndefined();
   expect(result.current.forForm.includeAdditionalMatch).toBe(true);
   expect(result.current.forForm.handleIncludeAdditionalMatch).not.toBeUndefined();
 });
-it('test for result calculation of useTeamResult', () => {
+
+it('計算結果のテスト', () => {
   const { result } = renderHook(() => useTeamResult(testData, 1));
 
   expect(result.current.teamResult).toEqual([
