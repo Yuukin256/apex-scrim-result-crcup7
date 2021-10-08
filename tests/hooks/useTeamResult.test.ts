@@ -5,27 +5,120 @@
 import '@testing-library/jest-dom';
 import { act, renderHook } from '@testing-library/react-hooks';
 import { useTeamResult } from 'hooks/useTeamResult';
-import { Team } from 'util/formatResultData';
+import { DayResult } from 'util/formatResultData';
 
-const testData = {
+const testData: DayResult = {
   day: '1日目',
   teams: [
-    new Team(1, 'tt1', 'testTeam1').addMatchResult(1, 1, 5, 6).addMatchResult(2, 10, 0, 6),
-    new Team(2, 'tt2', 'testTeam2').addMatchResult(1, '-', '-', 6).addMatchResult(2, 1, 10, 6),
+    {
+      noCapped: {
+        id: 1,
+        tag: 'tt1',
+        name: 'testTeam1',
+        results: [
+          {
+            match: 1,
+            placement: 1,
+            placementPoint: 12,
+            kill: 5,
+            killPoint: 5,
+            point: 17,
+          },
+          {
+            match: 2,
+            placement: 10,
+            placementPoint: 2,
+            kill: 0,
+            killPoint: 0,
+            point: 2,
+          },
+        ],
+      },
+      capped: {
+        id: 1,
+        tag: 'tt1',
+        name: 'testTeam1',
+        results: [
+          {
+            match: 1,
+            placement: 1,
+            placementPoint: 12,
+            kill: 5,
+            killPoint: 5,
+            point: 17,
+          },
+          {
+            match: 2,
+            placement: 10,
+            placementPoint: 2,
+            kill: 0,
+            killPoint: 0,
+            point: 2,
+          },
+        ],
+      },
+    },
+    {
+      noCapped: {
+        id: 2,
+        tag: 'tt2',
+        name: 'testTeam2',
+        results: [
+          {
+            match: 1,
+            placement: '-',
+            placementPoint: 0,
+            kill: '-',
+            killPoint: 0,
+            point: 0,
+          },
+          {
+            match: 2,
+            placement: 1,
+            placementPoint: 12,
+            kill: 10,
+            killPoint: 10,
+            point: 22,
+          },
+        ],
+      },
+      capped: {
+        id: 2,
+        tag: 'tt2',
+        name: 'testTeam2',
+        results: [
+          {
+            match: 1,
+            placement: '-',
+            placementPoint: 0,
+            kill: '-',
+            killPoint: 0,
+            point: 0,
+          },
+          {
+            match: 2,
+            placement: 1,
+            placementPoint: 12,
+            kill: 10,
+            killPoint: 6,
+            point: 18,
+          },
+        ],
+      },
+    },
   ],
 };
 
-it('test for initial values of useTeamResult', () => {
+it('初期値のテスト', () => {
   const { result } = renderHook(() => useTeamResult(testData, 1));
 
-  // 初期値のテスト
   expect(result.current.forForm.enableMaxKill).toBe(false);
-  expect(result.current.forForm.handleMaxKill).not.toBeUndefined();
+  expect(result.current.forForm.handleMaxKill).toBeDefined();
   expect(result.current.forForm.includeAdditionalMatch).toBe(true);
-  expect(result.current.forForm.handleIncludeAdditionalMatch).not.toBeUndefined();
+  expect(result.current.forForm.handleIncludeAdditionalMatch).toBeDefined();
 });
 
-it('test for result calculation of useTeamResult', () => {
+it('計算結果のテスト', () => {
   const { result } = renderHook(() => useTeamResult(testData, 1));
 
   expect(result.current.teamResult).toEqual([

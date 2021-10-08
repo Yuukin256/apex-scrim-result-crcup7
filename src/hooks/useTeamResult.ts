@@ -1,9 +1,9 @@
 import { FormControlLabelProps } from '@mui/material/FormControlLabel';
 import sum from 'lodash.sum';
 import { useMemo, useState } from 'react';
-import { DayResult, TeamResult } from 'util/formatResultData';
+import { DayResult, PlainTeamResult } from 'util/formatResultData';
 
-export type TeamTotalResult = TeamResult & {
+export type TeamTotalResult = PlainTeamResult & {
   totalPlacementPoint: number;
   totalKill: number;
   totalKillPoint: number;
@@ -38,11 +38,15 @@ export const useTeamResult = (dayResult: DayResult, defaultNumbersOfMatches: num
     const lastMatchPosition = includeAdditionalMatch ? void 0 : defaultNumbersOfMatches;
 
     const totalResult = result.map<TeamTotalResult>((team) => {
+      // 最大試合数までの結果
       const matchResult = team.results.slice(0, lastMatchPosition);
+
       const totalPlacementPoint = sum(matchResult.map((v) => v.placementPoint));
       const totalKill = sum(matchResult.map((v) => (typeof v.kill === 'string' ? 0 : v.kill)));
       const totalKillPoint = sum(matchResult.map((v) => v.killPoint));
       const totalPoint = sum(matchResult.map((v) => v.point));
+
+      // results は上書きして返す
       return { ...team, results: matchResult, totalPlacementPoint, totalKill, totalKillPoint, totalPoint };
     });
 

@@ -1,7 +1,7 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import React from 'react';
-import ResultTable from './resultTable';
+import ResultTable from './ResultTable';
 import { useTeamResult } from 'hooks/useTeamResult';
 import { DayResult } from 'util/formatResultData';
 

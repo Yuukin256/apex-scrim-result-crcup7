@@ -1,11 +1,13 @@
 import React from 'react';
-import ResultView from 'components/blocks/resultView';
-import Layout from 'components/layouts/layout';
-import Seo from 'components/layouts/seo';
+import ResultView from 'components/blocks/ResultView';
+import Layout from 'components/layouts/Layout';
+import Seo from 'components/layouts/Seo';
+import scrimMatchData from 'data/result.json';
+import teamData from 'data/team.json';
 import formatResultData from 'util/formatResultData';
 
 const MainPage: React.FC = () => {
-  const data = formatResultData();
+  const data = formatResultData(scrimMatchData, teamData);
   return (
     <Layout>
       <Seo title="Home" />
