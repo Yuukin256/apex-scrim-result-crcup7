@@ -1,7 +1,6 @@
 // 試合ごとの結果 -> チームごとの結果 に変換
 
 import { calculatePlacementPoint } from './calculatePlacementPoint';
-import teamData from 'data/team.json';
 
 export interface PlainTeamResult {
   id: number;
@@ -98,7 +97,13 @@ export interface DayResultInputData {
   }[];
 }
 
-const formatResultData = (scrimMatchData: DayResultInputData[]): DayResult[] => {
+export interface TeamInputData {
+  id: number;
+  tag: string;
+  name: string;
+}
+
+const formatResultData = (scrimMatchData: DayResultInputData[], teamData: TeamInputData[]): DayResult[] => {
   const formatted = scrimMatchData.map((dayResult) => {
     const teams: Team[] = teamData.map(({ id, tag, name }) => new Team(id, tag, name));
 
